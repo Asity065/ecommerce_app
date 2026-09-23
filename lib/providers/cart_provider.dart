@@ -2,15 +2,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/cart_item.dart';
 import '../models/product.dart';
+import '../utils/collection_extensions.dart';
 
 class CartNotifier extends StateNotifier<List<CartItem>> {
   CartNotifier() : super([]);
 
   void addProduct(Product product, {int quantity = 1}) {
+    final maxQuantity = product.stock == 0 ? 1 : product.stock;
     final index = state.indexWhere((item) => item.product.id == product.id);
+
     if (index >= 0) {
       final existing = state[index];
-      final maxQuantity = product.stock == 0 ? 1 : product.stock;
       final int newQuantity =
           (existing.quantity + quantity).clamp(1, maxQuantity).toInt();
       state = [
@@ -18,7 +20,8 @@ class CartNotifier extends StateNotifier<List<CartItem>> {
           if (i == index) existing.copyWith(quantity: newQuantity) else state[i]
       ];
     } else {
-      state = [...state, CartItem(product: product, quantity: quantity)];
+      final int initialQuantity = quantity.clamp(1, maxQuantity).toInt();
+      state = [...state, CartItem(product: product, quantity: initialQuantity)];
     }
   }
 
@@ -69,7 +72,3 @@ final cartTotalProvider = Provider<double>((ref) {
   final items = ref.watch(cartProvider);
   return items.fold(0.0, (sum, item) => sum + item.subtotal);
 });
-
-extension _FirstOrNull<T> on Iterable<T> {
-  T? get firstOrNull => isEmpty ? null : first;
-}

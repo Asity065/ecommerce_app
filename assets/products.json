@@ -1,0 +1,102 @@
+[
+  {
+    "id": "p1",
+    "name": "Casque Bluetooth Aria",
+    "description": "Casque sans fil à réduction de bruit active, 30h d'autonomie et son haute fidélité.",
+    "price": 89.99,
+    "category": "Audio",
+    "rating": 4.5,
+    "imageEmoji": "🎧",
+    "stock": 12
+  },
+  {
+    "id": "p2",
+    "name": "Montre connectée Pulse",
+    "description": "Suivi cardiaque, sommeil et sport. Étanche 50m, écran AMOLED.",
+    "price": 129.00,
+    "category": "Électronique",
+    "rating": 4.2,
+    "imageEmoji": "⌚",
+    "stock": 8
+  },
+  {
+    "id": "p3",
+    "name": "Sac à dos Urban",
+    "description": "Compartiment ordinateur 15\", tissu imperméable, port USB intégré.",
+    "price": 45.50,
+    "category": "Accessoires",
+    "rating": 4.7,
+    "imageEmoji": "🎒",
+    "stock": 20
+  },
+  {
+    "id": "p4",
+    "name": "Lampe de bureau LED",
+    "description": "Trois niveaux de luminosité, port de charge USB-C, pliable.",
+    "price": 24.90,
+    "category": "Maison",
+    "rating": 4.0,
+    "imageEmoji": "💡",
+    "stock": 15
+  },
+  {
+    "id": "p5",
+    "name": "Clavier mécanique Compact",
+    "description": "Switches rouges, rétroéclairage RGB, format 75%.",
+    "price": 74.99,
+    "category": "Électronique",
+    "rating": 4.6,
+    "imageEmoji": "⌨️",
+    "stock": 6
+  },
+  {
+    "id": "p6",
+    "name": "Bouteille isotherme 750ml",
+    "description": "Garde le froid 24h et le chaud 12h. Inox brossé.",
+    "price": 19.99,
+    "category": "Maison",
+    "rating": 4.3,
+    "imageEmoji": "🍶",
+    "stock": 30
+  },
+  {
+    "id": "p7",
+    "name": "Enceinte portable Boom",
+    "description": "Son 360°, résistante à l'eau IPX7, 12h d'autonomie.",
+    "price": 59.90,
+    "category": "Audio",
+    "rating": 4.4,
+    "imageEmoji": "🔊",
+    "stock": 10
+  },
+  {
+    "id": "p8",
+    "name": "Chaussures running Flex",
+    "description": "Amorti réactif, mesh respirant, semelle antidérapante.",
+    "price": 79.00,
+    "category": "Sport",
+    "rating": 4.1,
+    "imageEmoji": "👟",
+    "stock": 0
+  },
+  {
+    "id": "p9",
+    "name": "Tapis de yoga Premium",
+    "description": "Antidérapant, 6mm d'épaisseur, sangle de transport incluse.",
+    "price": 29.99,
+    "category": "Sport",
+    "rating": 4.8,
+    "imageEmoji": "🧘",
+    "stock": 18
+  },
+  {
+    "id": "p10",
+    "name": "Support téléphone bureau",
+    "description": "Réglable, compatible tous smartphones, aluminium.",
+    "price": 14.50,
+    "category": "Accessoires",
+    "rating": 3.9,
+    "imageEmoji": "📱",
+    "stock": 25
+  }
+]

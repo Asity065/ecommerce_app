@@ -5,6 +5,7 @@ import '../models/product.dart';
 import '../providers/cart_provider.dart';
 import '../providers/favorites_provider.dart';
 import '../screens/product_detail_screen.dart';
+import 'add_to_cart_button.dart';
 
 class ProductCard extends ConsumerWidget {
   final Product product;
@@ -72,9 +73,8 @@ class ProductCard extends ConsumerWidget {
                         .titleSmall
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  IconButton.filled(
-                    visualDensity: VisualDensity.compact,
-                    icon: const Icon(Icons.add_shopping_cart, size: 18),
+                  AddToCartButton(
+                    filled: true,
                     onPressed: outOfStock
                         ? null
                         : () {
@@ -86,6 +86,7 @@ class ProductCard extends ConsumerWidget {
                               ),
                             );
                           },
+                    child: const Icon(Icons.add_shopping_cart, size: 18),
                   ),
                 ],
               ),

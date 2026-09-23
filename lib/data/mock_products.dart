@@ -1,5 +1,6 @@
 import '../models/product.dart';
 
+/// Jeu de données mocké simulant une réponse d'API produits.
 final List<Product> mockProducts = [
   const Product(
     id: 'p1',

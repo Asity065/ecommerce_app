@@ -5,6 +5,8 @@ import 'screens/main_navigation.dart';
 
 void main() {
   runApp(
+    // ProviderScope doit englober toute l'application : c'est lui qui
+    // stocke l'état de tous les providers Riverpod.
     const ProviderScope(child: ECommerceApp()),
   );
 }

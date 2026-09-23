@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/cart_provider.dart';
+import '../widgets/animated_cart_icon.dart';
 import 'cart_screen.dart';
 import 'favorites_screen.dart';
 import 'product_list_screen.dart';
@@ -26,38 +26,29 @@ class _MainNavigationState extends ConsumerState<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    final cartCount = ref.watch(cartItemCountProvider);
-
     return Scaffold(
       body: IndexedStack(index: _index, children: _screens),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
         onDestinationSelected: (value) => setState(() => _index = value),
-        destinations: [
-          const NavigationDestination(
+        destinations: const [
+          NavigationDestination(
             icon: Icon(Icons.storefront_outlined),
             selectedIcon: Icon(Icons.storefront),
             label: 'Catalogue',
           ),
-          const NavigationDestination(
+          NavigationDestination(
             icon: Icon(Icons.favorite_border),
             selectedIcon: Icon(Icons.favorite),
             label: 'Favoris',
           ),
           NavigationDestination(
-            icon: Badge(
-              label: Text('$cartCount'),
-              isLabelVisible: cartCount > 0,
-              child: const Icon(Icons.shopping_cart_outlined),
-            ),
-            selectedIcon: Badge(
-              label: Text('$cartCount'),
-              isLabelVisible: cartCount > 0,
-              child: const Icon(Icons.shopping_cart),
-            ),
+            // Bonus : rebond animé quand un article est ajouté au panier.
+            icon: AnimatedCartIcon(),
+            selectedIcon: AnimatedCartIcon(selected: true),
             label: 'Panier',
           ),
-          const NavigationDestination(
+          NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
             label: 'Profil',

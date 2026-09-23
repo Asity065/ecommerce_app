@@ -1,4 +1,3 @@
-/// Modèle utilisateur (mocké — pas d'authentification réelle).
 class AppUser {
   final String id;
   final String name;

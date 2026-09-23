@@ -2,12 +2,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../services/favorites_storage_service.dart';
 
-final favoritesStorageServiceProvider = Provider<FavoritesStorageService>((ref) {
+final favoritesStorageServiceProvider = Provider<FavoritesStorage>((ref) {
   return const FavoritesStorageService();
 });
 
 class FavoritesNotifier extends StateNotifier<Set<String>> {
-  final FavoritesStorageService _storage;
+  final FavoritesStorage _storage;
 
   FavoritesNotifier(this._storage) : super({}) {
     _loadFromStorage();

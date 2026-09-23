@@ -16,6 +16,18 @@ class ProductDetailScreen extends ConsumerStatefulWidget {
 
 class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   int _quantity = 1;
+  double _buttonScale = 1.0;
+
+  void _addToCart(dynamic product) {
+    setState(() => _buttonScale = 0.92);
+    Future.delayed(const Duration(milliseconds: 130), () {
+      if (mounted) setState(() => _buttonScale = 1.0);
+    });
+    ref.read(cartProvider.notifier).addProduct(product, quantity: _quantity);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('$_quantity × ${product.name} ajouté(s) au panier')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,21 +111,17 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: SizedBox(
-            width: double.infinity,
-            child: FilledButton.icon(
-              icon: const Icon(Icons.add_shopping_cart),
-              label: const Text('Ajouter au panier'),
-              onPressed: outOfStock
-                  ? null
-                  : () {
-                      ref
-                          .read(cartProvider.notifier)
-                          .addProduct(product, quantity: _quantity);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('$_quantity × ${product.name} ajouté(s) au panier')),
-                      );
-                    },
+          child: AnimatedScale(
+            scale: _buttonScale,
+            duration: const Duration(milliseconds: 130),
+            curve: Curves.easeOut,
+            child: SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                icon: const Icon(Icons.add_shopping_cart),
+                label: const Text('Ajouter au panier'),
+                onPressed: outOfStock ? null : () => _addToCart(product),
+              ),
             ),
           ),
         ),
